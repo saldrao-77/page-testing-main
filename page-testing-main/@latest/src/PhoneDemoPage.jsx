@@ -84,7 +84,7 @@ export default function PhoneDemoPage() {
           </div>
 
           <div>
-            <a className="btn-back" href="https://Truebase.co" rel="noopener">
+            <a className="btn-back" href="https://withtruebase.com" rel="noopener">
               ← Back
             </a>
           </div>
@@ -175,7 +175,7 @@ export default function PhoneDemoPage() {
       <footer className="site-footer">
         <div className="footer-inner">
           <div>
-            <a href="https://Truebase.co" className="footer-link">Truebase Home</a>
+            <a href="https://withtruebase.com" className="footer-link">Truebase Home</a>
             <span className="sep">•</span>
             <a className="footer-link" href="mailto:team@withTruebase.com">team@withTruebase.com</a>
           </div>

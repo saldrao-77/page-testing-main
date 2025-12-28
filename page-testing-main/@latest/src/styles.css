@@ -1,0 +1,260 @@
+/* styles.css
+   - Global styles, color tokens, layout
+   - Matches soft green gradient, whitespace, rounded corners, and premium SaaS look
+   - Mobile-first, responsive breakpoints
+*/
+
+/* Color tokens */
+:root{
+  --bg: #f4fbff;
+  /* blue page gradient inspired by the SVG accent color (#75AFFF) */
+  --page-gradient-start: #c2e2ff; /* very light blue */
+  --page-gradient-end: #75AFFF;   /* SVG blue */
+  --muted: #6b7280;
+  --text: #0e0f11;
+  --card-bg: #ffffff;
+  /* Blue CTA tokens */
+  --cta-blue-start: #5AA6FF; /* lighter blue */
+  --cta-blue-end: #2D86FF;   /* deeper blue */
+  --cta-blue-shadow: 0 8px 30px rgba(45,134,255,0.16);
+  --cta: #21b37a; /* primary green */
+  --cta-2: #2fbf86; /* accent */
+  --shadow: 0 10px 30px rgba(12, 22, 18, 0.06);
+  --radius-md: 14px;
+  --radius-sm: 8px;
+  --max-width: 1100px;
+  --gap: 20px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Reset-ish */
+* { box-sizing: border-box; }
+html,body,#root { height: 100%; }
+body {
+  margin: 0;
+  background: linear-gradient(180deg, var(--page-gradient-start) 0%, var(--page-gradient-end) 60%);
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+/* Page root */
+.page-root {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Header */
+.site-header {
+  padding: 18px 20px;
+  background: transparent;
+}
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.logo-text {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-size: 18px;
+  color: var(--text);
+}
+.btn-back {
+  text-decoration:none;
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:10px;
+  color:var(--text);
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(14,15,17,0.04);
+  font-weight:500;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.btn-back:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+
+/* Main hero layout */
+.hero-area { padding: 28px 20px 60px; width:100%; }
+.hero-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* Desktop layout */
+@media(min-width: 920px){
+  .hero-inner {
+    grid-template-columns: 1fr 420px;
+    gap: 48px;
+  }
+}
+
+/* Hero copy */
+.hero-copy {
+  padding: 22px;
+}
+.hero-title {
+  margin: 6px 0 8px;
+  font-size: 34px;
+  line-height: 1.04;
+  font-weight: 700;
+  color: var(--text);
+}
+.hero-sub {
+  margin: 0 0 18px;
+  color: var(--muted);
+  max-width: 60ch;
+  font-size: 16px;
+}
+
+/* Form card */
+.form-card {
+  margin-top: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.98));
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  width: 100%;
+  border: 1px solid rgba(15,20,15,0.03);
+}
+
+/* Fields */
+.field {
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin-bottom: 14px;
+}
+.field label {
+  font-weight:600;
+  font-size: 13px;
+  color:#111;
+}
+.field input[type="text"],
+.field input[type="tel"] {
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid #E6EEF0;
+  background: var(--card-bg);
+  font-size: 15px;
+  outline: none;
+}
+.field input:focus {
+  box-shadow: 0 4px 18px rgba(47,191,134,0.12);
+  border-color: var(--cta-2);
+}
+
+/* helper & error */
+.field-help { font-size: 12px; color: var(--muted); margin-top: -6px; }
+.field-error { font-size: 13px; color: #c84b4b; margin-top: -6px; }
+
+/* Buttons */
+.form-actions { margin-top: 6px; display:flex; gap:12px; align-items:center; }
+.btn-primary {
+  background: linear-gradient(180deg, var(--cta-blue-start) 0%, var(--cta-blue-end) 100%);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--cta-blue-shadow);
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s;
+}
+.btn-primary:hover { transform: translateY(-3px); filter: brightness(.98); }
+.btn-primary:focus { outline: 3px solid rgba(45,134,255,0.18); outline-offset: 3px; }
+
+/* ghost link in success */
+.btn-ghost {
+  display:inline-block;
+  padding:10px 14px;
+  border-radius:10px;
+  border:1px solid rgba(0,0,0,0.06);
+  background:transparent;
+  text-decoration:none;
+  color:var(--text);
+  margin-top:12px;
+}
+
+/* privacy note */
+.privacy-note {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 54ch;
+}
+
+/* Success box */
+.success-box {
+  padding: 18px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #f5fff8, #ffffff);
+  border: 1px solid rgba(47,191,134,0.08);
+  box-shadow: 0 8px 30px rgba(47,191,134,0.08);
+}
+.success-box h3 { margin: 0 0 8px; }
+.success-box p { margin: 0 0 10px; color: var(--muted); }
+
+/* Visual mockup area */
+.hero-visual {
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding: 12px;
+}
+.mockup-wrap {
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  align-items:center;
+}
+.mockup {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(12,20,15,0.06);
+  border: 1px solid rgba(12,20,15,0.03);
+}
+
+/* small device adjustments */
+@media(max-width: 640px){
+  .hero-title { font-size: 26px; }
+  .hero-inner { padding: 0 6px; }
+  .mockup { max-width: 320px; height: auto; }
+}
+
+/* Footer */
+.site-footer {
+  margin-top: auto;
+  padding: 0%;
+}
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.footer-inner .footer-link {
+  color: var(--muted);
+  text-decoration: none;
+  margin-right: 8px;
+}
+.footer-inner .sep { margin: 0 8px; color: #e1e6e4; }
+.footer-copy { color: #9aa2a0; font-size: 13px; margin-top: 6px; }
